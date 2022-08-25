@@ -1,0 +1,716 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Polygon PoS",
+      "version": "1.0.0",
+      "contact": {}
+    },
+    "tags": [
+      {
+        "name": "eth",
+        "description": "RPC Node Polygon PoS Mainnet"
+      },
+      {
+        "name": "net",
+        "description": "Dispatch and relay services"
+      },
+      {
+        "name": "web3",
+        "description": "Blockchain queries"
+      },
+      {
+        "name": "txpool",
+        "description": "Blockchain queries"
+      }
+    ],
+    "paths": {
+      "/chainID": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "Gets ChainID",
+          "description": "Gets ChainID",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response"
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_chainId",
+                  "params": [],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_chainId"
+          }
+        }
+      },
+      "/getBlockByNumber": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "Get Block Info By Number",
+          "description": "",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_getBlockByNumber",
+                  "params": [
+                    "0x1b4",
+                    true
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_getBlockByNumber"
+          }
+        }
+      },
+      "/getBlockByHash": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "Get Block Info By Hash",
+          "description": "",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_getBlockByHash",
+                  "params": [
+                    "0x23d7deab07f568e78734c73c8b8e6f626e346218027823b6084ed811c2a2bcbe",
+                    true
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_getBlockByHash"
+          }
+        }
+      },
+      "/blockNumber": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "Get Block Number",
+          "description": "",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_blockNumber",
+                  "params": [],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_blockNumber"
+          }
+        }
+      },
+      "/sendRawTransaction": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "Send Raw Transaction",
+          "description": "",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_sendRawTransaction",
+                  "params": [
+                    "0xf868808082520894ba8cae91c858120e9699f9b9936418c6bd3eccc1880de0b6b3a76400008081eba0bec0715bcd88898a8caddb1e655090c46dc6c4c878576ce4e7fe5836540b9415a01ad8a63021eb92976e4f721db1b5938446b57a149e661a715224659836b12dc9"
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_sendRawTransaction"
+          }
+        }
+      },
+      "/sendTransaction": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "Send Transaction",
+          "description": "",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_sendTransaction",
+                  "params": [
+                    {
+                      "from": "0x9aFc51c7867f369371F238674ee4459556c5D2b5",
+                      "to": "0xBa8CAE91c858120E9699f9b9936418C6bd3ecCC1",
+                      "gas": "0x76c0",
+                      "gasPrice": "0x9184e72a000",
+                      "value": "0xde0b6b3a7640000",
+                      "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
+                    }
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_sendTransaction"
+          }
+        }
+      },
+      "/getTransactionByHash": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "Get Transaction by Hash",
+          "description": "",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_getTransactionByHash",
+                  "params": [
+                    "0xb1982f1573055e93c03176d0f5f087ed5bc339bb2c2c3b74434e55d3ac659550"
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_getTransactionByHash"
+          }
+        }
+      },
+      "/getTransactionReceipt": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "Get Transaction by Receipt",
+          "description": "",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_getTransactionReceipt",
+                  "params": [
+                    "0xb1982f1573055e93c03176d0f5f087ed5bc339bb2c2c3b74434e55d3ac659550"
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_getTransactionReceipt"
+          }
+        }
+      },
+      "/getStorageAt": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "",
+          "description": "Get Storage",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_getStorageAt",
+                  "params": [
+                    "0x9aFc51c7867f369371F238674ee4459556c5D2b5",
+                    "0x0",
+                    "latest"
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_getStorageAt"
+          }
+        }
+      },
+      "/gasPrice": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "",
+          "description": "Get Gas Price",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_gasPrice",
+                  "params": [],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_gasPrice"
+          }
+        }
+      },
+      "/call": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "",
+          "description": "Eth Msg Call",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_call",
+                  "params": [
+                    {
+                      "from": "0xB9A04CFe22a7c6E582ecd9883F5b63201809dD47",
+                      "to": "0x0000000000000000000000000000000000002002",
+                      "gasPrice": "0x0",
+                      "data": "0x2e4176cf"
+                    },
+                    "latest"
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_call"
+          }
+        }
+      },
+      "/estimateGas": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "",
+          "description": "Estimate Gas",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_estimateGas",
+                  "params": [
+                    {
+                      "value": "0xde0b6b3a7640000",
+                      "from": "0x9afc51c7867f369371f238674ee4459556c5d2b5",
+                      "to": "0xcd5f731b3b77737743f80a3d4b0722b710f549cb",
+                      "data": "0x3a4b66f1"
+                    },
+                    "latest"
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_estimateGas"
+          }
+        }
+      },
+      "/getLogs": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "",
+          "description": "Get Logs",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_getLogs",
+                  "params": [
+                    {
+                      "blockHash": "0xbf48d4fd125646578f84f71b54d259b49e2211ad7e80483a59c4e4b6b3249e6b",
+                      "fromBlock": "0x1",
+                      "toBlock": "0x400",
+                      "addresses": "0xcd5f731b3b77737743f80a3d4b0722b710f549cb",
+                      "topics": [
+                        "0x9e71bc8eea02a63969f509818f2dafb9254532904319f9dbda79b67bd34a5f3d"
+                      ]
+                    }
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_getLogs"
+          }
+        }
+      },
+      "/getBalance": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "",
+          "description": "Get Balance",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_getBalance",
+                  "params": [
+                    "0x9aFc51c7867f369371F238674ee4459556c5D2b5",
+                    "latest"
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_getBalance"
+          }
+        }
+      },
+      "/getTransactionCount": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "",
+          "description": "Get Transaction Count",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_getTransactionCount",
+                  "params": [
+                    "0x9aFc51c7867f369371F238674ee4459556c5D2b5",
+                    "latest"
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_getTransactionCount"
+          }
+        }
+      },
+      "/getCode": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "",
+          "description": "Eth Get Code",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_getCode",
+                  "params": [
+                    "0xCD5F731b3b77737743f80a3d4b0722B710f549cB",
+                    "latest"
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_getCode"
+          }
+        }
+      },
+      "/newFilter": {
+        "post": {
+          "tags": [
+            "eth"
+          ],
+          "summary": "",
+          "description": "Eth New Filter",
+          "parameters": [],
+          "operationId": "",
+          "responses": {
+            "200": {
+              "description": "Default response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {},
+                "example": {
+                  "jsonrpc": "2.0",
+                  "method": "eth_newFilter",
+                  "params": [
+                    {
+                      "fromBlock": "0x1",
+                      "toBlock": "0x900",
+                      "addresses": "0xcd5f731b3b77737743f80a3d4b0722b710f549cb",
+                      "topics": [
+                        "0x9e71bc8eea02a63969f509818f2dafb9254532904319f9dbda79b67bd34a5f3d"
+                      ]
+                    }
+                  ],
+                  "id": 1
+                }
+              }
+            },
+            "description": "eth_newFilter"
+          }
+        }
+      }
+    },
+    "security": [],
+    "servers": [
+      {
+        "url": "https://polygon-rpc.com",
+        "description": ""
+      }
+    ],
+    "components": {
+      "links": {},
+      "callbacks": {},
+      "schemas": {}
+    }
+  }
