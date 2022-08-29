@@ -21,15 +21,20 @@ class OrsTransformer:
                     "summary": method["summary"],
                     "responses": {            
                         "200": {
-                            "description": "Default response",
-                            "content": {}
+                            "description": method["result"]["name"],
+                            "content": {
+                                "application/json": {
+                                    "schema": method["result"]["schema"]
+                                    #"schema": {}
+                                }
+                            }
                         }},
                     "requestBody": {
                         "required": False,
                         "content": {
                             "application/json": {
-                                #"schema": method["params"][0]["schema"] if len(method["params"]) > 0 else {},
-                                "schema": {},
+                                "schema": method["params"][0]["schema"] if len(method["params"]) > 0 else {},
+                                #"schema": {},
                                 "example": {
                                     "jsonrpc": "2.0",
                                     "method": method["summary"],
@@ -37,7 +42,8 @@ class OrsTransformer:
                                     "id": 1
                                 }
                             }
-                        }
+                        },
+                        "description": method["params"][0]["name"] if len(method["params"]) > 0 else ""
                     }
                 }
             }
