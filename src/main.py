@@ -15,6 +15,12 @@ class OrsTransformer:
         self.transform["paths"] = {}
 
         for index, method in enumerate(self.spec["methods"]):
+
+            params_length = len(method["params"])
+            req_schema = {}
+
+            if params_length > 0:
+                req_schema = method["params"][0]["schema"]
             
             self.transform["paths"]["/"+method["name"]] = {
                 "post": {
@@ -24,8 +30,8 @@ class OrsTransformer:
                             "description": method["result"]["name"],
                             "content": {
                                 "application/json": {
-                                    "schema": method["result"]["schema"]
-                                    #"schema": {}
+                                    #"schema": method["result"]["schema"]
+                                    "schema": {}
                                 }
                             }
                         }},
@@ -33,8 +39,8 @@ class OrsTransformer:
                         "required": False,
                         "content": {
                             "application/json": {
-                                "schema": method["params"][0]["schema"] if len(method["params"]) > 0 else {},
-                                #"schema": {},
+                                #"schema": req_schema,
+                                "schema": {},
                                 "example": {
                                     "jsonrpc": "2.0",
                                     "method": method["summary"],
