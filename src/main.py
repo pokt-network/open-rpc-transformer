@@ -14,22 +14,34 @@ class OrsTransformer:
 
         self.transform["paths"] = {}
 
-        for method in self.spec["methods"]:
+        for index, method in enumerate(self.spec["methods"]):
+            
             self.transform["paths"]["/"+method["name"]] = {
                 "post": {
+                    "summary": method["summary"],
                     "responses": {            
                         "200": {
                             "description": "Default response",
                             "content": {}
                         }},
                     "requestBody": {
-                    "required": False,
-                    "content": {
-                        },
-                    
+                        "required": False,
+                        "content": {
+                            "application/json": {
+                                #"schema": method["params"][0]["schema"] if len(method["params"]) > 0 else {},
+                                "schema": {},
+                                "example": {
+                                    "jsonrpc": "2.0",
+                                    "method": method["summary"],
+                                    "params": [],
+                                    "id": 1
+                                }
+                            }
+                        }
                     }
                 }
             }
+
 
     def saveSpec(self, name):
         BASE_DIR = os.path.join( os.path.dirname( __file__ ), '..' )
