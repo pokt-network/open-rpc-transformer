@@ -2568,23 +2568,12 @@
                 "application/json": {
                   "schema": {
                     "type": "array",
-                    "items": [
+                    "items":
                       {
                         "title": "Proof-of-work hash",
                         "type": "string",
                         "pattern": "^0x([0-9a-f][0-9a-f]){0,32}$"
-                      },
-                      {
-                        "title": "seed hash",
-                        "type": "string",
-                        "pattern": "^0x([0-9a-f][0-9a-f]){0,32}$"
-                      },
-                      {
-                        "title": "difficulty",
-                        "type": "string",
-                        "pattern": "^0x([0-9a-f][0-9a-f]){0,32}$"
                       }
-                    ]
                   }
                 }
               }
