@@ -11,6 +11,7 @@ class OrsTransformer:
     def toOas(self):
         self.transform["openapi"] = "3.0.0"
         self.transform["info"] = self.spec["info"]
+        self.transform["components"] = self.spec["components"]
 
         self.transform["paths"] = {}
 
@@ -21,17 +22,20 @@ class OrsTransformer:
 
             if params_length > 0:
                 req_schema = method["params"][0]["schema"]
+
+            req_params = method["params"]
             
             self.transform["paths"]["/"+method["name"]] = {
                 "post": {
                     "summary": method["summary"],
+                    "operationId": method["name"],
                     "responses": {            
                         "200": {
                             "description": method["result"]["name"],
                             "content": {
                                 "application/json": {
-                                    #"schema": method["result"]["schema"]
-                                    "schema": {}
+                                    "schema": method["result"]["schema"]
+                                    #"schema": {}
                                 }
                             }
                         }},
@@ -39,8 +43,8 @@ class OrsTransformer:
                         "required": False,
                         "content": {
                             "application/json": {
-                                #"schema": req_schema,
-                                "schema": {},
+                                "schema": req_schema,
+                                #"schema": {},
                                 "example": {
                                     "jsonrpc": "2.0",
                                     "method": method["summary"],
