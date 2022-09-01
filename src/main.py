@@ -2,6 +2,8 @@ import os
 import requests
 import json
 
+from .example_params import ParamEx
+
 
 class OrsTransformer:
     def __init__(self, orsPath):
@@ -15,8 +17,8 @@ class OrsTransformer:
 
         self.transform["paths"] = {}
 
-        for index, method in enumerate(self.spec["methods"]):
-
+        for method in self.spec["methods"]:
+            req_ex = getattr(ParamEx, method["name"], ParamEx.empty).value
             req_schema = {
                 "title": "{}Request".format(method["name"]),
                 "type": "object",
@@ -50,19 +52,30 @@ class OrsTransformer:
                     "id": {"title": "RPC Request ID", "type": "integer"},
                 },
             }
+            resp_schema = {
+                "title": "{}Response".format(method["name"]),
+                "type": "object",
+                "properties": {
+                    "id": {"title": "RPC Request ID", "type": "integer"},
+                    "jsonrpc": {
+                        "title": "jsonrpc version",
+                        "type": "string",
+                        "enum": ["2.0"],
+                    },
+                    "result": method["result"]["schema"],
+                },
+            }
             self.transform["paths"]["/" + method["name"]] = {
                 "post": {
-                    "summary": method["summary"],
+                    "summary": method["name"],
+                    "description": (
+                        method["summary"] + "\n" + method.get("description", "")
+                    ).strip(),
                     "operationId": method["name"],
                     "responses": {
                         "200": {
                             "description": method["result"]["name"],
-                            "content": {
-                                "application/json": {
-                                    "schema": method["result"]["schema"]
-                                    # "schema": {}
-                                }
-                            },
+                            "content": {"application/json": {"schema": resp_schema}},
                         }
                     },
                     "requestBody": {
@@ -70,15 +83,19 @@ class OrsTransformer:
                         "content": {
                             "application/json": {
                                 "schema": req_schema,
+                                "example": {
+                                    "jsonrpc": "2.0",
+                                    "method": method["name"],
+                                    "params": req_ex,
+                                    "id": 0,
+                                },
                             }
                         },
-                        "description": "",
                     },
                 }
             }
 
     def saveSpec(self, name):
-        BASE_DIR = os.path.join(os.path.dirname(__file__), "..")
         with open(name + ".json", "w") as sf:
             sf.write(json.dumps(self.transform, indent=2))
 
