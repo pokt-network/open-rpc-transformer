@@ -17,7 +17,13 @@ class OrsTransformer:
             self.transform["openapi"] = "3.1.0"
             self.transform["info"] = self.spec["info"]
             self.transform["components"] = self.spec["components"]
-
+            self.transform["tags"] = [
+                {"name": "eth"},
+                {"name": "net"},
+                {"name": "web3"},
+                {"name": "shh"},
+                {"name": "db"},
+            ]
             self.transform["paths"] = {}
 
             for method in self.spec["methods"]:
@@ -70,6 +76,7 @@ class OrsTransformer:
                 }
                 self.transform["paths"]["/" + method["name"]] = {
                     "post": {
+                        "tags": [method["name"].split("_")[0]],
                         "summary": method["name"],
                         "description": (
                             method["summary"] + "\n" + method.get("description", "")
