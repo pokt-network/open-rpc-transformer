@@ -218,6 +218,14 @@ SwimmerParams = Params(
     topic="TODO",
 )
 
+StarknetParams = Params(
+    send_address="0x80fb6192665651a9c2edd07aaf17e17963f36a11",
+    contract_address="0x9ab9e81be39b73de3ccd9408862b1fc6d2144d2b",
+    block_hash="0xfb994c41e3cd792456d064ff03ecc2c363bd5a867e959bf5c16d2bf18e0097f9",
+    call_data="0x2d6ef3100000000000000000000000000000000000000000000000000000000000502f02",
+    transaction_hash="0xfb994c41e3cd792456d064ff03ecc2c363bd5a867e959bf5c16d2bf18e0097f9",
+    topic="TODO",
+)
 
 param_map = {
     "eth": EthParams,
@@ -244,4 +252,5 @@ param_map = {
     "polygon": PolygonParams,
     "solana": SolanaParams,
     "swimmer": SwimmerParams,
+    "starknet": StarknetParams,
 }
